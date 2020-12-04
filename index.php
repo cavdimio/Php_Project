@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <!-- <head>
-    <!-- <meta charset="utf-8">
-    <title></title>
-  </head> -->
-  <body>
-
 <?php
-echo "Hello World!";
-echo "Hello Konstantina";
-echo "Hello Christos";
- ?>
+ include_once 'db_connection.php';
+?>
 
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+        <title></title>
+</head>
+<body>
+
+    <?php
+       $sql = "SELECT * FROM singers;";
+       $result = mysqli_query($conn, $sql);
+       $resultCheck = mysqli_num_rows($result);
+
+       if ($resultCheck > 0){
+           while($row = mysqli_fetch_assoc($result)) {
+                echo $row['name_column'];
+           }    
+       }
+    ?>
+      
+</body>
 </html>
